@@ -127,7 +127,7 @@ const Login = () => {
                   <a onClick={handleNavigate} className="/signup">
                     create new
                   </a>
-                  <button className="input-button" type="submit">
+                  <button className="input-button_login" type="submit">
                     Log in
                   </button>
                 </div>
