@@ -28,8 +28,8 @@ function UserProfile() {
     localStorage.setItem("user", JSON.stringify(updatedData));
     navigate("/login");
   };
-  const loggedUser = userData.find((user) => user.isLogin === true || []);
-
+  const loggedUser = userData.find((user) => user.isLogin === true);
+ console.log(loggedUser);
   const initialValues = {
     // passing name attribute here for every input field
     first_name: loggedUser.first_name,
@@ -51,6 +51,7 @@ function UserProfile() {
           // console.log(item);
           if (item.isLogin === true) {
             if (activeEmail.some((item) => item.email === values.email)) {
+              console.log(item);
               toast.error("user already exist!");
               return {
                 ...item,

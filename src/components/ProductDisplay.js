@@ -92,6 +92,7 @@ const ProductDisplay = () => {
         <>
           <div className="row container mx-auto ">{displayProducts}</div>
           <ReactPaginate
+        
             previousLabel={"prev"}
             nextLabel={"Next"}
             pageCount={pageCount}

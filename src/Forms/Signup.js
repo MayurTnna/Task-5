@@ -35,7 +35,7 @@ const Signup = () => {
       onSubmit: (values) => {
         const tempData = JSON.parse(localStorage.getItem("user")) || [];
         const encryptedPassword = encryption(values.password);
-        console.log(tempData);
+   
         const changedData = tempData && [
           ...tempData,
           {
@@ -49,7 +49,7 @@ const Signup = () => {
         // console.log(values);
         const users = tempData.filter((item) => item.email === values.email);
         //filtering data based on if email is already isnt existed in Local storage
-        console.log(users);
+      
         const userEmail = users.length > 0;
 
         if (userEmail) {
