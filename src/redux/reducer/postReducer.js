@@ -4,6 +4,8 @@ const initialState = {
   posts: [],
   loading: false,
   error: null,
+  total: 0,
+  data: [],
 };
 //updates the state of a Redux store based on specific action type
 const postReducer = (state = initialState, action) => {
@@ -26,8 +28,11 @@ const postReducer = (state = initialState, action) => {
         loading: false,
         error: action.payload,
       };
-      default:  
-          return state;
-  }
+    default:
+      return {...state}
+      
+    
+    }
+    
 };
-export default postReducer
+export default postReducer;

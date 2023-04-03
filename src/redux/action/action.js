@@ -15,20 +15,28 @@ const fetchPostFail = (error) => ({
   payload: error,
 });
 
-export function fetchPosts() {
-    return function (dispatch) {
-      dispatch(fetchPostStart());
-      axios
-        .get("https://dummyjson.com/products?limit=100")
-        .then((response) => {
-          const posts = response.data;
+export const addItemToCart = (items) => ({
+  type: types.ADD_ITEM_TO_CART,
+  payload: items,
+});
+export const removeItemFromCart = (items) => ({
+  type: types.REMOVE_ITEM_FROM_CART,
+  payload: items,
+});
+
+export function fetchPosts(skip) {
+  return function (dispatch) {
+    dispatch(fetchPostStart());
+    axios
+      .get(`https://dummyjson.com/products?limit=8&skip=${skip}`)
+      .then((response) => {
+        const posts = response.data;
         //   console.log(posts)
-          dispatch(fetchPostSuccess(posts));
-          
-        })
-        
-        .catch((error) => {
-          dispatch(fetchPostFail(error.message));
-        });
-    };
-  }
+        dispatch(fetchPostSuccess(posts));
+      })
+
+      .catch((error) => {
+        dispatch(fetchPostFail(error.message));
+      });
+  };
+}

@@ -29,7 +29,6 @@ function UserProfile() {
     navigate("/login");
   };
   const loggedUser = userData.find((user) => user.isLogin === true);
- console.log(loggedUser);
   const initialValues = {
     // passing name attribute here for every input field
     first_name: loggedUser.first_name,

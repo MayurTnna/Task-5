@@ -21,12 +21,16 @@ import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a lo
 import { Carousel } from "react-responsive-carousel";
 import { Link } from "react-router-dom";
 import "../assets/scss/dummyDetail.scss";
+import { useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import Header from "./Header";
+import { addItemToCart } from "../redux/action/action";
 
 const DummyDetail = () => {
   const [data, setData] = useState();
+  const dispatch = useDispatch()
   const { id } = useParams();
 
   useEffect(() => {
@@ -39,9 +43,9 @@ const DummyDetail = () => {
         console.error(error.message);
       });
   }, []);
-  console.log(data);
   return (
     <>
+   <Header/>
       <div className="chakra">
         <ChakraProvider className="chakra">
           {data && (
@@ -141,6 +145,26 @@ const DummyDetail = () => {
                       </SimpleGrid>
                     </Box>
                   </Stack>
+                  <Button
+                  onClick={() => {
+                    dispatch(addItemToCart(data));
+                  }}
+                  className="addcart text-light"
+                    rounded={"none"}
+                    w={"full"}
+                    mt={8}
+                    size={"lg"}
+                    py={"7"}
+                    bg={("gray.900", "gray.50")}
+                    color={("white", "gray.900")}
+                    textTransform={"uppercase"}
+                    _hover={{
+                      transform: "translateY(2px)",
+                      boxShadow: "lg",
+                    }}
+                  >
+                    Add to cart
+                  </Button>
                   <Stack
                     direction="row"
                     alignItems="center"

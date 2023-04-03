@@ -30,6 +30,15 @@
     border-radius: 10px;
 }
 
+.pagination_container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.addcart {
+    background: linear-gradient(to right, #3a6186, #89253e)!important; /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */}
+
 .glow-on-hover:active {
     color: #000
 }
