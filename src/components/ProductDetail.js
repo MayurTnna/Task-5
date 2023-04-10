@@ -16,7 +16,6 @@ import {
 import { MdLocalShipping } from "react-icons/md";
 import Badge from "react-bootstrap/Badge";
 import { RiStarSFill } from "react-icons/ri";
-import "../assets/scss/main.scss";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
 import { Link } from "react-router-dom";
@@ -26,11 +25,12 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import Header from "./Header";
+import "../assets/scss/main.scss";
 import { addItemToCart } from "../redux/action/action";
 
 const DummyDetail = () => {
   const [data, setData] = useState();
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const { id } = useParams();
 
   useEffect(() => {
@@ -45,7 +45,7 @@ const DummyDetail = () => {
   }, []);
   return (
     <>
-   <Header/>
+      <Header />
       <div className="chakra">
         <ChakraProvider className="chakra">
           {data && (
@@ -146,10 +146,10 @@ const DummyDetail = () => {
                     </Box>
                   </Stack>
                   <Button
-                  onClick={() => {
-                    dispatch(addItemToCart(data));
-                  }}
-                  className="addcart text-light"
+                    onClick={() => {
+                      dispatch(addItemToCart(data));
+                    }}
+                    className="addcart text-light"
                     rounded={"none"}
                     w={"full"}
                     mt={8}

@@ -44,63 +44,58 @@ const ProductDisplay = () => {
 
   return (
     <>
-   
-        
       <Header />
       {loading ? (
         <div>
           <h1>Loading...</h1>
         </div>
       ) : (
-        
         <div className="row container mx-auto ">
           {data.products ? (
             data.products.map((item) => (
               <div className="col col-lg-3 col-md-6 col-sm-12 my-4 p-5 ">
                 <Card
-                  className="text-dark"
+                  className="text-dark main-card"
                   onClick={() => {
                     navigate(`/detail/${item.id}`);
                   }}
                 >
                   <Card.Img
                     variant="top"
-                   className="card-image"
+                    className="card-image"
                     src={item.thumbnail}
                   />
 
                   <Card.Body className="main-card">
-                    <Card.Title>{item.title}</Card.Title>
-                    <Card.Text>
+                    <Card.Text className="card-description_text">
                       {item.description.split(" ").slice(0, 6).join(" ")}
+                    
                     </Card.Text>
-                  </Card.Body>
-
-                  <Card.Text className="float-start">{item.brand}.</Card.Text>
-                  <Card.Text className="float-start text-danger">
-                    {item.price}$
+                
+                    <Card.Title className="text-start card-title_text">{item.title}</Card.Title>
+                  <Card.Text className="float-start card-brand_text ">{item.brand}.</Card.Text>
+                
+                  <Card.Text className="float-end fw-5 text-danger">
+                    ${item.price}.00 
                   </Card.Text>
-                  <Card.Text>
+                  </Card.Body>
+                  
+          <div className="container">
+                  <Card.Text className="float-start fw-5">
                     <Badge pill bg="warning" text="dark" className="badge">
                       <div className="d-flex align-items-center justify-content-center">
                         {item.rating}
                         <RiStarSFill />
+                      
                       </div>
                     </Badge>
+                    
                   </Card.Text>
-                  <Card.Text className="float-start text-success">
+                  <Card.Text className="float-end text-success">
                     {item.discountPercentage}%
                   </Card.Text>
-                  <Card.Body>
-                    <Card.Link href="#">
-                      <Link to={`/detail/${item.id}`}>
-                        {" "}
-                        <Button className="glow-on-hover "  >
-                          View
-                        </Button>
-                      </Link>
-                    </Card.Link>
-                  </Card.Body>
+                  </div>
+                
                 </Card>
               </div>
             ))
@@ -109,9 +104,10 @@ const ProductDisplay = () => {
           )}
         </div>
       )}
-      
-        <Pagination className="pagination-line pagination_container ">{items}</Pagination>
-   
+
+      <Pagination className="pagination-line pagination_container ">
+        {items}
+      </Pagination>
     </>
   );
 };

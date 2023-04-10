@@ -6,11 +6,11 @@ import Navbar from "react-bootstrap/Navbar";
 import { CgProfile } from "react-icons/cg";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import "../assets/scss/Header.scss";
-import { AiOutlineShoppingCart } from "react-icons/ai";
 import { MdOutlineShoppingBag } from "react-icons/md";
 import { useSelector } from "react-redux";
 import { useState } from "react";
+import { toast } from "react-hot-toast";
+import "../assets/scss/Header.scss";
 import ShoppingCart from "./ShoppingCart";
 
 function Header() {
@@ -19,8 +19,12 @@ function Header() {
 
   const navigate = useNavigate();
   const handleShow = (e) => {
-    e.preventDefault();
-    setShowCard((prev) => !prev);
+    if (getData.length === 0) {
+      toast.error("Your cart is empty");
+    } else {
+      e.preventDefault();
+      setShowCard((prev) => !prev);
+    }
   };
 
   const handleNavigate = () => {
@@ -49,8 +53,10 @@ function Header() {
               variant="ghost"
             >
               <div class="icon-container">
-              <MdOutlineShoppingBag className="text-danger fs-3"/>
-                <span class="badge_container  text-light">{getData.length}</span>
+                <MdOutlineShoppingBag className="text-danger fs-3" />
+                <span class="badge_container  text-light">
+                  {getData.length}
+                </span>
               </div>
             </Button>
           </div>
@@ -58,7 +64,7 @@ function Header() {
             <CgProfile className="text-info" />
           </Button>
         </Form>
-          <div className="mt-5 mx-4">{showCard && <ShoppingCart />}</div>
+        <div className="mt-5 mx-4">{showCard && <ShoppingCart />}</div>
       </Container>
     </Navbar>
   );
