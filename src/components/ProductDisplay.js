@@ -44,12 +44,15 @@ const ProductDisplay = () => {
 
   return (
     <>
+   
+        
       <Header />
       {loading ? (
         <div>
           <h1>Loading...</h1>
         </div>
       ) : (
+        
         <div className="row container mx-auto ">
           {data.products ? (
             data.products.map((item) => (
@@ -62,7 +65,7 @@ const ProductDisplay = () => {
                 >
                   <Card.Img
                     variant="top"
-                    style={{ height: "10rem" }}
+                   className="card-image"
                     src={item.thumbnail}
                   />
 
@@ -78,7 +81,7 @@ const ProductDisplay = () => {
                     {item.price}$
                   </Card.Text>
                   <Card.Text>
-                    <Badge pill bg="warning" text="dark">
+                    <Badge pill bg="warning" text="dark" className="badge">
                       <div className="d-flex align-items-center justify-content-center">
                         {item.rating}
                         <RiStarSFill />

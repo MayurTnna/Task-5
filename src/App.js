@@ -9,7 +9,6 @@ import Login from "./Forms/Login";
 import UserProfile from "./Forms/UserProfile";
 import ProtectedRoute from "./routes/ProtectedRoute";
 import ForgotPass from "./Forms/forgotPassword/ForgotPass";
-import ShoppingCart from "./components/ShoppingCart";
 
 
 function App() {
@@ -27,7 +26,6 @@ function App() {
 
           <Route path="/login" exact element={<Login />} />
           <Route path="/signup" element={<Signup />} />
-          <Route path="/shop"element= {<ShoppingCart/>}/>
         </Routes>
       </BrowserRouter>
     </div>
