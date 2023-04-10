@@ -9,6 +9,7 @@ import Button from "react-bootstrap/esm/Button";
 import { useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { encryption } from "../utils/Privacy";
+import { userSignFail, userSignSuccess } from "../Constants";
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -53,9 +54,9 @@ const Signup = () => {
         const userEmail = users.length > 0;
 
         if (userEmail) {
-          toast.error("user already exists ");
+          toast.error(userSignFail);
         } else {
-          toast.success("successfully signedUp");
+          toast.success(userSignSuccess);
           localStorage.setItem("user", JSON.stringify(changedData));
           navigate("/login");
         }
@@ -179,7 +180,7 @@ const Signup = () => {
                   />
                   <Button
                     variant={"ghost"}
-                    className=" text-center toggle-password  "
+                    className=" text-center toggle-password_signup "
                     onClick={() => setShowPassword(!showPassword)}
                   >
                     {showPassword ? <FaEyeSlash /> : <FaEye />}
@@ -201,7 +202,7 @@ const Signup = () => {
                     Confirm Password
                   </label>
                   <input
-                    type={showPassword ? "password" : "text"}
+                    type={showConPassword ? "password" : "text"}
                     autoComplete="off"
                     name="confirm_password"
                     id="confirm_password"
@@ -222,7 +223,7 @@ const Signup = () => {
                   </div>
                   <Button
                     variant={"ghost"}
-                    className=" toggle-password   "
+                    className=" toggle-password_signup   "
                     onClick={() => setShowConPassword(!showConPassword)}
                   >
                     {showConPassword ? <FaEyeSlash /> : <FaEye />}

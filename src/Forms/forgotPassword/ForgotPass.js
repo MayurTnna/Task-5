@@ -7,6 +7,11 @@ import { forgotPasswordSchema } from "../schemas/UserSchema";
 import { toast } from "react-hot-toast";
 import { decryption } from "../../utils/Privacy";
 import { useNavigate } from "react-router-dom";
+import {
+  passwordNotUser,
+  passwordSame,
+  passwordSuccess,
+} from "../../Constants";
 
 const ForgotPass = () => {
   const [showPassword, setShowPassword] = useState("false");
@@ -32,17 +37,17 @@ const ForgotPass = () => {
           if (item.isLogin === true) {
             if (decryption(activeUser.password) === values.current_password) {
               if (values.current_password !== values.new_password) {
-                toast.success("Password updated");
+                toast.success(passwordSuccess);
                 navigate("/userprofile");
                 return {
                   ...item,
                   password: values.new_password,
                 };
               } else {
-                toast.error("Same password!");
+                toast.error(passwordSame);
               }
             } else {
-              toast.error("not a user");
+              toast.error(passwordNotUser);
             }
           } else {
             return item;

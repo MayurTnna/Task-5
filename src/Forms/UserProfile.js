@@ -7,6 +7,8 @@ import { toast } from "react-hot-toast";
 import { useFormik } from "formik";
 import { userProfileSchema } from "./schemas/UserSchema";
 import Header from "../components/Header";
+import { UpdateSuccess, userSignFail } from "../Constants";
+import { Update } from "@mui/icons-material";
 
 function UserProfile() {
   const navigate = useNavigate();
@@ -51,12 +53,12 @@ function UserProfile() {
           if (item.isLogin === true) {
             if (activeEmail.some((item) => item.email === values.email)) {
               console.log(item);
-              toast.error("user already exist!");
+              toast.error(userSignFail);
               return {
                 ...item,
               };
             } else {
-              toast.success("Updated successfully");
+              toast.success(UpdateSuccess);
               return {
                 ...item,
                 first_name: values.first_name,
