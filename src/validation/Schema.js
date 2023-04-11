@@ -1,59 +1,60 @@
 import * as Yup from "yup";
+import { errorMessages } from "../constants/SchemaConstants";
 
 export const SignUpSchema = Yup.object().shape({
   first_name: Yup.string()
-    .min(2, "First name must be at least 2 characters")
-    .max(10, "First name cannot be longer than 10 characters")
-    .required("Please enter your First name"),
+    .min(2, errorMessages.firstNameMinLength)
+    .max(10, errorMessages.firstNameMaxLength)
+    .required(errorMessages.firstNameRequired),
   last_name: Yup.string()
-    .min(2, "Last name must be at least 2 characters")
-    .max(10, "Last name cannot be longer than 10 characters")
-    .required("Please enter your Last name"),
+    .min(2, errorMessages.lastNameMinLength)
+    .max(10, errorMessages.lastNameMaxLength)
+    .required(errorMessages.lastNameRequired),
   mobile_no: Yup.number()
-    .min(10, "please enter 10 digit number")
-    .required("please enter your number"),
+    .min(10, errorMessages.mobileNoMinLength)
+    .required(errorMessages.mobileNoRequired),
   email: Yup.string()
-    .email("Please enter a valid email address")
-    .required("Please enter your email"),
+    .email(errorMessages.emailInvalid)
+    .required(errorMessages.emailRequired),
   password: Yup.string()
-    .min(8, "Password must be at least 8 characters")
-    .required("Please enter your password")
+    .min(8, errorMessages.passwordMinLength)
+    .required(errorMessages.passwordRequired)
     .matches(
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])/,
-      "Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character"
+      errorMessages.passwordCriteria
     ),
   confirm_password: Yup.string()
-    .required("Please confirm your password")
-    .oneOf([Yup.ref("password"), null], "Passwords must match"),
+    .required(errorMessages.confirmPasswordRequired)
+    .oneOf([Yup.ref("password"), null], errorMessages.confirmPasswordMatch),
 });
 
 export const LoginSchema = Yup.object({
   email: Yup.string()
-    .email("Please enter a valid email address")
-    .required("Please enter your email"),
+    .email(errorMessages.emailInvalid)
+    .required(errorMessages.emailRequired),
   password: Yup.string()
-    .min(8, "Password must be at least 8 characters")
-    .required("Please enter your password")
+    .min(8, errorMessages.passwordMinLength)
+    .required(errorMessages.passwordRequired)
     .matches(
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])/,
-      "Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character"
+      errorMessages.passwordCriteria
     ),
 });
 export const userProfileSchema = Yup.object().shape({
   first_name: Yup.string()
-    .min(2, "First name must be at least 2 characters")
-    .max(10, "First name cannot be longer than 10 characters")
-    .required("Please enter your First name"),
+    .min(2, errorMessages.firstNameMinLength)
+    .max(10, errorMessages.firstNameMaxLength)
+    .required(errorMessages.firstNameRequired),
   last_name: Yup.string()
-    .min(2, "Last name must be at least 2 characters")
-    .max(10, "Last name cannot be longer than 10 characters")
-    .required("Please enter your Last name"),
+    .min(2, errorMessages.lastNameMinLength)
+    .max(10, errorMessages.lastNameMaxLength)
+    .required(errorMessages.lastNameRequired),
   mobile_no: Yup.number()
-    .min(10, "please enter 10 digit number")
-    .required("please enter your number"),
+    .min(10, errorMessages.mobileNoMinLength)
+    .required(errorMessages.mobileNoRequired),
   email: Yup.string()
-    .email("Please enter a valid email address")
-    .required("Please enter your email"),
+    .email(errorMessages.emailInvalid)
+    .required(errorMessages.emailRequired),
 });
 
 export const forgotPasswordSchema = Yup.object().shape({
@@ -65,18 +66,18 @@ export const forgotPasswordSchema = Yup.object().shape({
       "Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character"
     ),
   new_password: Yup.string()
-    .min(8, "Password must be at least 8 characters")
-    .required("Please enter new password")
+    .min(8, errorMessages.emailInvalid)
+    .required(errorMessages.emailRequired)
     .matches(
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])/,
-      "Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character"
+      errorMessages.currentPasswordCriteria
     ),
   confirm_password: Yup.string()
-    .min(8, "Password must be at least 8 characters")
-    .required("Please re-enter your new password")
+    .min(8, errorMessages.passwordMinLength)
+    .required(errorMessages.confirmPasswordRequired)
     .matches(
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])/,
-      "Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character"
+      errorMessages.currentPasswordCriteria
     )
-    .oneOf([Yup.ref("new_password"), null], "Password must match"),
+    .oneOf([Yup.ref("new_password"), null], errorMessages.confirmPasswordMatch  ),
 });

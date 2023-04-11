@@ -7,11 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { decryption } from "../../utils/Utils";
 import { forgotPasswordSchema } from "../../validation/Schema";
 import "../../assets/scss/forgotPassword.scss";
-import {
-  passwordNotUser,
-  passwordSame,
-  passwordSuccess,
-} from "../../constants/Constants";
+import { messages } from "../../constants/Constants";
 
 const ForgotPass = () => {
   const [showPassword, setShowPassword] = useState("false");
@@ -37,17 +33,17 @@ const ForgotPass = () => {
           if (item.isLogin === true) {
             if (decryption(activeUser.password) === values.current_password) {
               if (values.current_password !== values.new_password) {
-                toast.success(passwordSuccess);
+                toast.success(messages.passwordSuccess);
                 navigate("/userprofile");
                 return {
                   ...item,
                   password: values.new_password,
                 };
               } else {
-                toast.error(passwordSame);
+                toast.error(messages.passwordSame);
               }
             } else {
-              toast.error(passwordNotUser);
+              toast.error(messages.passwordNotUser);
             }
           } else {
             return item;

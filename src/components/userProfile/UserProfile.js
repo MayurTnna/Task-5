@@ -7,7 +7,7 @@ import { toast } from "react-hot-toast";
 import { useFormik } from "formik";
 import { userProfileSchema } from "../../validation/Schema";
 import Header from "../common/Header";
-import { UpdateSuccess, userSignFail } from "../../constants/Constants";
+import { messages } from "../../constants/Constants";
 
 function UserProfile() {
   const navigate = useNavigate();
@@ -50,12 +50,12 @@ function UserProfile() {
           if (item.isLogin === true) {
             if (activeEmail.some((item) => item.email === values.email)) {
               console.log(item);
-              toast.error(userSignFail);
+              toast.error(messages.userSignFail);
               return {
                 ...item,
               };
             } else {
-              toast.success(UpdateSuccess);
+              toast.success(messages.UpdateSuccess);
               return {
                 ...item,
                 first_name: values.first_name,

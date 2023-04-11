@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import "../../assets/scss/login.scss";
-import { useFormik } from "formik"; //for form handling
+import { useFormik } from "formik"; 
 import { LoginSchema } from "../../validation/Schema";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import { decryption } from "../../utils/Utils";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import Button from "react-bootstrap/esm/Button";
-import { userLogFail, userLogSuccess } from "../../constants/Constants";
+import { messages } from "../../constants/Constants";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState("false");
@@ -16,7 +16,6 @@ const Login = () => {
     navigate("../signup");
   };
   const initialValues = {
-    // passing name attribute here for every input field
     email: "",
     password: "",
   };
@@ -47,11 +46,11 @@ const Login = () => {
               };
             }
           });
-          toast.success(userLogSuccess);
+          toast.success(messages.userLogSuccess);
           localStorage.setItem("user", JSON.stringify(updatedData));
           navigate("/product");
         } else {
-          toast.error(userLogFail);
+          toast.error(messages.userLogFail);
         }
       },
     });
@@ -140,4 +139,4 @@ const Login = () => {
 };
 export default Login;
 
-// handleChange and handleBlur are used together to handle form validation and to update the state of the form in real-time as the user interacts with it.
+

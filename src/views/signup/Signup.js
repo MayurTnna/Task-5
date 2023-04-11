@@ -7,7 +7,7 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useState } from "react";
 import "../../assets/scss/signup.scss";
 import { encryption } from "../../utils/Utils";
-import { userSignFail, userSignSuccess } from "../../constants/Constants";
+import { messages } from "../../constants/Constants";
 import { SignUpSchema } from "../../validation/Schema";
 
 const Signup = () => {
@@ -52,9 +52,9 @@ const Signup = () => {
         const userEmail = users.length > 0;
 
         if (userEmail) {
-          toast.error(userSignFail);
+          toast.error(messages.userSignFail);
         } else {
-          toast.success(userSignSuccess);
+          toast.success(messages.userSignSuccess);
           localStorage.setItem("user", JSON.stringify(changedData));
           navigate("/login");
         }
