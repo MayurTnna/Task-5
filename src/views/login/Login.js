@@ -5,7 +5,6 @@ import { LoginSchema } from "../../validation/Schema";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import { decryption } from "../../utils/Utils";
-
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import Button from "react-bootstrap/esm/Button";
 import { userLogFail, userLogSuccess } from "../../constants/Constants";
@@ -28,33 +27,33 @@ const Login = () => {
       validationSchema: LoginSchema,
 
       onSubmit: (values) => {
-        const loggedUserData = JSON.parse(localStorage.getItem("user")); //converting again string to object to access properties;
-        loggedUserData.map((item) => {
-          if (
-            values.email === item.email &&
+        const userData = JSON.parse(localStorage.getItem("user"));
+        console.log(userData);
+        const matchedData = userData.some(
+          (item) =>
+            item.email === values.email &&
             decryption(item.password) === values.password
-          ) {
-            const UpdatedUser = loggedUserData.map((item) => {
-              if (item.email === values.email) {
-                return {
-                  ...item,
-                  isLogin: true,
-                };
-              } else {
-                return {
-                  ...item,
-                  isLogin: false,
-                };
-              }
-            });
-            toast.success(userLogSuccess);
-            localStorage.setItem("user", JSON.stringify(UpdatedUser));
-            navigate("/product");
-          } else {
-            console.log("add");
-            toast.error(userLogFail);
-          }
-        });
+        );
+        if (matchedData) {
+          const updatedData = userData.map((item) => {
+            if (item.email === values.email) {
+              return {
+                ...item,
+                isLogin: true,
+              };
+            } else {
+              return {
+                ...item,
+                isLogin: false,
+              };
+            }
+          });
+          toast.success(userLogSuccess);
+          localStorage.setItem("user", JSON.stringify(updatedData));
+          navigate("/product");
+        } else {
+          toast.error(userLogFail);
+        }
       },
     });
 
