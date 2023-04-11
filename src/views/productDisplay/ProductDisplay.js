@@ -1,20 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchPosts } from "../../redux/action/action";
-import Card from "react-bootstrap/Card";
-import { RiStarSFill } from "react-icons/ri";
-import Button from "react-bootstrap/Button";
-import Badge from "react-bootstrap/Badge";
 import "../../assets/scss/productDisplay.scss";
 import "../../assets/scss/main.scss";
-import { Link, useNavigate } from "react-router-dom";
 import Header from "../../components/common/Header";
-import Pagination from "react-bootstrap/Pagination";
+import ProductPagination from "../../components/productList/ProductPagination";
+import ProductCard from "../../components/productList/ProductCard";
+
 
 const ProductDisplay = () => {
   const data = useSelector((state) => state.postReducer.posts);
-
-  const navigate = useNavigate();
+  console.log(data)
   const [active, setActive] = useState(0);
   const loading = useSelector((state) => state.loading);
   const dispatch = useDispatch();
@@ -23,19 +19,6 @@ const ProductDisplay = () => {
     setActive(number);
     dispatch(fetchPosts(number * 8));
   };
-
-  let items = [];
-  for (let number = 1; number <= 100 / 8; number++) {
-    items.push(
-      <Pagination.Item
-        key={number}
-        active={number === active}
-        onClick={() => handleIncrement(number)}
-      >
-        {number}
-      </Pagination.Item>
-    );
-  }
 
   useEffect(() => {
     dispatch(fetchPosts());
@@ -54,49 +37,7 @@ const ProductDisplay = () => {
           {data.products ? (
             data.products.map((item) => (
               <div className="col col-lg-3 col-md-6 col-sm-12 my-4 p-5 ">
-                <Card
-                  className="text-dark main-card"
-                  onClick={() => {
-                    navigate(`/detail/${item.id}`);
-                  }}
-                >
-                  <Card.Img
-                    variant="top"
-                    className="card-image"
-                    src={item.thumbnail}
-                  />
-
-                  <Card.Body className="main-card">
-                    <Card.Text className="card-description_text">
-                      {item.description.split(" ").slice(0, 6).join(" ")}
-                    
-                    </Card.Text>
-                
-                    <Card.Title className="text-start card-title_text">{item.title}</Card.Title>
-                  <Card.Text className="float-start card-brand_text ">{item.brand}.</Card.Text>
-                
-                  <Card.Text className="float-end fw-5 text-danger">
-                    ${item.price}.00 
-                  </Card.Text>
-                  </Card.Body>
-                  
-          <div className="container">
-                  <Card.Text className="float-start fw-5">
-                    <Badge pill bg="warning" text="dark" className="badge">
-                      <div className="d-flex align-items-center justify-content-center">
-                        {item.rating}
-                        <RiStarSFill />
-                      
-                      </div>
-                    </Badge>
-                    
-                  </Card.Text>
-                  <Card.Text className="float-end text-success">
-                    {item.discountPercentage}%
-                  </Card.Text>
-                  </div>
-                
-                </Card>
+                <ProductCard item={item} />
               </div>
             ))
           ) : (
@@ -105,10 +46,14 @@ const ProductDisplay = () => {
         </div>
       )}
 
-      <Pagination className="pagination-line pagination_container ">
-        {items}
-      </Pagination>
+      <ProductPagination active={active} handleIncrement={handleIncrement} />
     </>
   );
 };
+
 export default ProductDisplay;
+
+
+
+
+

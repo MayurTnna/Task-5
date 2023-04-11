@@ -28,6 +28,7 @@ import Header from "../common/Header";
 import "../../assets/scss/main.scss";
 import "../../assets/scss/productDisplay.scss";
 import { addItemToCart } from "../../redux/action/action";
+import ProductDetailCarousel from "./productdetail/ProductDetailCarousel";
 
 const DummyDetail = () => {
   const [data, setData] = useState();
@@ -51,20 +52,13 @@ const DummyDetail = () => {
         <ChakraProvider className="chakra">
           {data && (
             <Container className="chakra-bg" maxW={"7xl"}>
-              {/* <Button className="float-start mt-4">back</Button> */}
               <SimpleGrid
                 columns={{ base: 1, lg: 2 }}
                 spacing={{ base: 8, md: 10 }}
                 py={{ base: 18, md: 24 }}
               >
                 <Flex>
-                  <Carousel>
-                    {data.images.map((item) => (
-                      <div>
-                        <img src={item} />
-                      </div>
-                    ))}
-                  </Carousel>
+                  <ProductDetailCarousel data={data} />
                 </Flex>
                 <Stack spacing={{ base: 6, md: 10 }}>
                   <Box as={"header"}>
