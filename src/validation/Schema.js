@@ -80,5 +80,3 @@ export const forgotPasswordSchema = Yup.object().shape({
     )
     .oneOf([Yup.ref("new_password"), null], "Password must match"),
 });
-
-export default SignUpSchema;

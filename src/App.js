@@ -2,14 +2,13 @@ import "./App.css";
 import { BrowserRouter } from "react-router-dom";
 import { Routes, Route } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
-import ProductDisplay from "./components/ProductDisplay";
-import ProductDetail from "./components/ProductDetail";
-import Signup from "../src/Forms/Signup";
-import Login from "./Forms/Login";
-import UserProfile from "./Forms/UserProfile";
+import ProductDisplay from "../src/views/productDisplay/ProductDisplay";
+import ProductDetail from "./components/productDisplay/ProductDetail";
+import Signup from "./views/signup/Signup";
+import Login from "./views/login/Login";
+import UserProfile from "./components/userProfile/UserProfile";
 import ProtectedRoute from "./routes/ProtectedRoute";
-import ForgotPass from "./Forms/forgotPassword/ForgotPass";
-
+import ForgotPass from "./components/forgotPassword/ForgotPass";
 
 function App() {
   return (

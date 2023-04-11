@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchPosts } from "../redux/action/action";
+import { fetchPosts } from "../../redux/action/action";
 import Card from "react-bootstrap/Card";
 import { RiStarSFill } from "react-icons/ri";
 import Button from "react-bootstrap/Button";
 import Badge from "react-bootstrap/Badge";
-import "../assets/scss/productDisplay.scss";
-import "../assets/scss/main.scss";
+import "../../assets/scss/productDisplay.scss";
+import "../../assets/scss/main.scss";
 import { Link, useNavigate } from "react-router-dom";
-import Header from "./Header";
+import Header from "../../components/common/Header";
 import Pagination from "react-bootstrap/Pagination";
 
 const ProductDisplay = () => {

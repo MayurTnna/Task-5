@@ -1,15 +1,14 @@
 import React from "react";
-import "../assets/scss/Signup.scss";
 import { useFormik } from "formik"; //for form handling
-import SignupSchema from "./schemas/UserSchema";
-import { useNavigate } from "react-router-dom";
-import "../assets/scss/main.scss";
 import { toast } from "react-hot-toast";
 import Button from "react-bootstrap/esm/Button";
-import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { encryption } from "../utils/Privacy";
-import { userSignFail, userSignSuccess } from "../Constants";
+import { useState } from "react";
+import "../../assets/scss/signup.scss";
+import { encryption } from "../../utils/Utils";
+import { userSignFail, userSignSuccess } from "../../constants/Constants";
+import { SignUpSchema } from "../../validation/Schema";
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -31,7 +30,7 @@ const Signup = () => {
   const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
     useFormik({
       initialValues,
-      validationSchema: SignupSchema,
+      validationSchema: SignUpSchema,
 
       onSubmit: (values) => {
         const tempData = JSON.parse(localStorage.getItem("user")) || [];
@@ -47,7 +46,6 @@ const Signup = () => {
             password: encryptedPassword,
           },
         ];
-        // console.log(values);
         const users = tempData.filter((item) => item.email === values.email);
         //filtering data based on if email is already isnt existed in Local storage
 
@@ -257,3 +255,24 @@ const Signup = () => {
 export default Signup;
 
 // handleChange and handleBlur are used together to handle form validation and to update the state of the form in real-time as the user interacts with it.
+// if (filterdata) {
+//   const updateData = userData.map((item) => {
+//     if (item.email === values.email) {
+//       localStorage.setItem("isactive", true);
+//       return {
+//         ...item,
+//         isLogin: true,
+//       };
+//     } else {
+//       return {
+//         ...item,
+//         isLogin: false,
+//       };
+//     }
+//   });
+//   toast.success(messages.login);
+//   localStorage.setItem("Users", JSON.stringify(updateData));
+//   navigate("/product");
+// } else {
+//   toast.error(messages.loginerror);
+// }

@@ -1,3 +1,4 @@
+import React from "react";
 import Button from "react-bootstrap/esm/Button";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
@@ -7,11 +8,11 @@ import { CgProfile } from "react-icons/cg";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { MdOutlineShoppingBag } from "react-icons/md";
-import { useSelector } from "react-redux";
 import { useState } from "react";
 import { toast } from "react-hot-toast";
-import "../assets/scss/Header.scss";
-import ShoppingCart from "./ShoppingCart";
+import { useSelector } from "react-redux";
+import "../../assets/scss/header.scss";
+import ShoppingCart from "../../views/shopingCart/ShoppingCart";
 
 function Header() {
   const getData = useSelector((state) => state.cartReducer.data);

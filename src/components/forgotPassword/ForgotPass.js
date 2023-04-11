@@ -1,17 +1,17 @@
 import React, { useState } from "react";
 import { useFormik } from "formik";
-import "../forgotPassword/forgotPassword.scss";
 import Button from "react-bootstrap/esm/Button";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { forgotPasswordSchema } from "../schemas/UserSchema";
 import { toast } from "react-hot-toast";
-import { decryption } from "../../utils/Privacy";
 import { useNavigate } from "react-router-dom";
+import { decryption } from "../../utils/Utils";
+import { forgotPasswordSchema } from "../../validation/Schema";
+import "../../assets/scss/forgotPassword.scss";
 import {
   passwordNotUser,
   passwordSame,
   passwordSuccess,
-} from "../../Constants";
+} from "../../constants/Constants";
 
 const ForgotPass = () => {
   const [showPassword, setShowPassword] = useState("false");
@@ -169,9 +169,6 @@ const ForgotPass = () => {
                   </button>
                 </div>
               </form>
-              {/* <p className="sign-up">
-                <a href="#">forgot Password</a>
-              </p> */}
             </div>
             <div className="modal-right">
               <img

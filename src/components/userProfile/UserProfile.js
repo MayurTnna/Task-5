@@ -1,19 +1,17 @@
-import React, { useState } from "react";
-import "../assets/scss/UserProfile.scss";
+import React from "react";
+import "../../assets/scss/userProfile.scss";
 import Button from "react-bootstrap/Button";
-import { RiLockPasswordLine, RiLogoutCircleRLine } from "react-icons/ri";
+import { RiLockPasswordLine } from "react-icons/ri";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import { useFormik } from "formik";
-import { userProfileSchema } from "./schemas/UserSchema";
-import Header from "../components/Header";
-import { UpdateSuccess, userSignFail } from "../Constants";
-import { Update } from "@mui/icons-material";
+import { userProfileSchema } from "../../validation/Schema";
+import Header from "../common/Header";
+import { UpdateSuccess, userSignFail } from "../../constants/Constants";
 
 function UserProfile() {
   const navigate = useNavigate();
   const userData = JSON.parse(localStorage.getItem("user")) || [];
-  // console.log(userData)
   const handleUpdatePassword = () => {
     navigate("/forgotpassword");
   };
@@ -49,7 +47,6 @@ function UserProfile() {
         console.log(activeEmail);
         // upadting user's data:-
         const newData = userData.map((item) => {
-          // console.log(item);
           if (item.isLogin === true) {
             if (activeEmail.some((item) => item.email === values.email)) {
               console.log(item);
@@ -76,7 +73,6 @@ function UserProfile() {
         localStorage.setItem("user", JSON.stringify(newData));
       },
     });
-  // console.log(updatedUser);
   return (
     <>
       <Header />

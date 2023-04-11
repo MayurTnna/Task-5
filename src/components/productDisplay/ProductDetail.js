@@ -19,14 +19,15 @@ import { RiStarSFill } from "react-icons/ri";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
 import { Link } from "react-router-dom";
-import "../assets/scss/dummyDetail.scss";
 import { useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-import Header from "./Header";
-import "../assets/scss/main.scss";
-import { addItemToCart } from "../redux/action/action";
+import "../../assets/scss/dummyDetail.scss";
+import Header from "../common/Header";
+import "../../assets/scss/main.scss";
+import "../../assets/scss/productDisplay.scss";
+import { addItemToCart } from "../../redux/action/action";
 
 const DummyDetail = () => {
   const [data, setData] = useState();

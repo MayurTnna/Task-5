@@ -1,8 +1,8 @@
 import React from "react";
-import "../assets/scss/shoppingCart.scss";
+import "../../assets/scss/shoppingCart.scss"
 import { useDispatch, useSelector } from "react-redux";
 import { Card, Button } from "react-bootstrap";
-import { addItemToCart, removeItemFromCart } from "../redux/action/action";
+import { addItemToCart, removeItemFromCart } from "../../redux/action/action";
 function ShoppingCart() {
   const items = useSelector((state) => state.cartReducer.data);
 
@@ -18,7 +18,7 @@ function ShoppingCart() {
               <Card
                 style={{ width: "28rem", height: "10rem", margin: "auto" }}
                 className="my-3 bg-black text-light"
-                key={item.id}   
+                key={item.id}
               >
                 <Card.Body>
                   <Card.Title>
