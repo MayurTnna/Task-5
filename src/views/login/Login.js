@@ -28,7 +28,6 @@ const Login = () => {
 
       onSubmit: (values) => {
         const userData = JSON.parse(localStorage.getItem("user"));
-        console.log(userData);
         const matchedData = userData.some(
           (item) =>
             item.email === values.email &&
