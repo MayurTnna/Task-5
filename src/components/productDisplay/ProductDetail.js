@@ -116,13 +116,15 @@ const DummyDetail = () => {
                             </span>
                             {data.brand}
                           </ListItem>
-                          <ListItem>
-                            <Badge pill bg="warning" text="dark">
+                          <ListItem >
+                            <Badge pill bg="warning" text="dark"
+                            >
                               <div className="d-flex align-items-center justify-content-center">
                                 {data.rating}
                                 <RiStarSFill />
                               </div>
                             </Badge>
+                          
                           </ListItem>{" "}
                         </List>
                         <List spacing={2}>

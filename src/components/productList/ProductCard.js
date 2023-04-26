@@ -1,10 +1,9 @@
 import React from "react";
 import Card from "react-bootstrap/Card";
-import { RiStarSFill } from "react-icons/ri";
-import Badge from "react-bootstrap/Badge";
 import { useNavigate } from "react-router-dom";
 import "../../assets/scss/productDisplay.scss";
 import "../../assets/scss/main.scss";
+import Stars from "./Stars";
 
 const ProductCard = ({ item }) => {
   const navigate = useNavigate();
@@ -37,12 +36,13 @@ const ProductCard = ({ item }) => {
 
         <div className="container">
           <Card.Text className="float-start fw-5">
-            <Badge pill bg="warning" text="dark" className="badge">
+            <Stars rating={item.rating} />
+            {/* <Badge pill bg="warning" text="dark" className="badge">
               <div className="d-flex align-items-center justify-content-center">
-                {item.rating}
-                <RiStarSFill />
-              </div>
-            </Badge>
+                {/* {item.rating} */}
+            {/* <RiStarSFill /> */}
+            {/* </div> */}
+            {/* </Badge> */}
           </Card.Text>
           <Card.Text className="float-end text-success">
             {item.discountPercentage}%
@@ -54,3 +54,5 @@ const ProductCard = ({ item }) => {
 };
 
 export default ProductCard;
+
+

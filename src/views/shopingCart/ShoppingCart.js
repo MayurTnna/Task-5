@@ -30,6 +30,7 @@ function ShoppingCart() {
                       </h4>
                     </div>
                   </Card.Title>
+                  {/* <img src={item.thumbnail} style={{height : "30px"}}/> */}
                   <Card.Subtitle
                     className="mb-2 text-muted"
                     style={{ paddingTop: "50px" }}

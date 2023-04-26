@@ -23,3 +23,5 @@ const ProductPagination = ({ active, handleIncrement }) => {
 };
 
 export default ProductPagination;
+
+
