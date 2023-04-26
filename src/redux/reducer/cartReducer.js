@@ -8,18 +8,17 @@ const initialState = {
 const cartReducer = (state = initialState, action) => {
   // firstly will match id of data ;if not than returns -1
   const temp = { ...action.payload, total: 1 };
-    //   const itemPrice = state.data.findIndex(
-    //     (item) => item.id === action.payload.id
-    //   );
+  //   const itemPrice = state.data.findIndex(
+  //     (item) => item.id === action.payload.id
+  //   );
   //deleting value from array without changing main array
   const removeItem = state.data.filter((item) => item !== action.payload);
-
 
   switch (action.type) {
     case types.ADD_ITEM_TO_CART:
       const itemPrice1 = state.data.findIndex(
-          (item) => item.id === action.payload.id
-          );
+        (item) => item.id === action.payload.id
+      );
       if (itemPrice1 >= 0) {
         state.data[itemPrice1].total += 1;
         // console.log(state.data.length)
