@@ -4,19 +4,37 @@ import { useNavigate } from "react-router-dom";
 import "../../assets/scss/productDisplay.scss";
 import "../../assets/scss/main.scss";
 import Stars from "./Stars";
+import { Breathing, Shimmer } from "react-shimmer";
+import { useState } from "react";
 
 const ProductCard = ({ item }) => {
   const navigate = useNavigate();
+  const [loaded, setLoaded] = useState(false);
+
+  function handleImageLoad() {
+    setLoaded(true);
+  }
   return (
     <>
-    
       <Card
         className="text-dark main-card"
         onClick={() => {
           navigate(`/detail/${item.id}`);
         }}
       >
-        <Card.Img variant="top" className="card-image" src={item.thumbnail} />
+        {!loaded && (
+          <Breathing width={220} height={250} style={{ borderRadius: "5px" }} />
+        )}
+        <Card.Img
+          variant="top"
+          className="card-image"
+          src={item.thumbnail}
+          alt=""
+          onLoad={handleImageLoad}
+          style={{ display: loaded ? "block" : "none" }}
+        />
+
+        {/* <Card.Img variant="top" className="card-image" src={item.thumbnail} /> */}
 
         <Card.Body className="main-card">
           <Card.Text className="card-description_text">
@@ -55,5 +73,3 @@ const ProductCard = ({ item }) => {
 };
 
 export default ProductCard;
-
-

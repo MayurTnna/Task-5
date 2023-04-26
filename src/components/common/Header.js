@@ -36,7 +36,7 @@ function Header() {
     <Navbar className=" indexz" variant="dark" expand="lg">
       <Container fluid>
         <Link to="/product" className="text-decoration-none">
-          <Navbar.Brand href="/product" className="head-section ">
+          <Navbar.Brand href="/product" className="head-section">
             Buzzzzarrrr
           </Navbar.Brand>
         </Link>
@@ -62,7 +62,7 @@ function Header() {
             </Button>
           </div>
           <Button href="" onClick={handleNavigate} variant="dark">
-            <CgProfile className="text-info" />
+            <CgProfile className="text-info mt-2    " />
           </Button>
         </Form>
         <div className="mt-5 mx-4">{showCard && <ShoppingCart />}</div>
