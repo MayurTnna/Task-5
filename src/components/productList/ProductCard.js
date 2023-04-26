@@ -9,6 +9,7 @@ const ProductCard = ({ item }) => {
   const navigate = useNavigate();
   return (
     <>
+    
       <Card
         className="text-dark main-card"
         onClick={() => {
