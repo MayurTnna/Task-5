@@ -8,6 +8,7 @@ import { useFormik } from "formik";
 import { userProfileSchema } from "../../validation/Schema";
 import Header from "../common/Header";
 import { messages } from "../../constants/Constants";
+import { MyAvatar } from "./MyAvatar";
 
 function UserProfile() {
   const navigate = useNavigate();
@@ -83,7 +84,10 @@ function UserProfile() {
             <div className="modal">
               <div className="modal-container">
                 <div className="modal-left">
-                  <h1 className="modal-title">Welcome {values.first_name}</h1>
+                  <div className="profile-title">
+                    <h1 className="modal-title">Welcome {values.first_name}</h1>
+                    <MyAvatar />
+                  </div>
                   <p className="modal-desc"></p>
                   <form onSubmit={handleSubmit}>
                     <div className="input-block">
@@ -193,13 +197,13 @@ function UserProfile() {
                       </div>
                     </div>
                     <Button
-                      className="input-button mt-2 "
+                      className="input-button update-lock mt-2 "
                       variant="danger"
                       onClick={handleUpdatePassword}
                     >
-                      Update Password
+                      <p className="m-0">Update Password</p>
                       <span className="px-1">
-                        <RiLockPasswordLine className=" mb-1" />
+                        <RiLockPasswordLine className="" />
                       </span>
                     </Button>{" "}
                   </form>

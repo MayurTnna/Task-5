@@ -27,7 +27,6 @@
     overflow: hidden;
     position: absolute;
     transition-duration: 0.3s;
-    // background: #fff;
   }
 
   .modal-title {
@@ -198,5 +197,24 @@
     display: flex;
     justify-content: flex-end;
     align-items: center;
+  }
+  .profile-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    @media screen and (max-width: 435px) {
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: center;
+      align-content: center;
+    }
+  }
+  .update-lock {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    p {
+      margin: 0 !important;
+    }
   }
 }

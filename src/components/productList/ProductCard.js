@@ -34,8 +34,6 @@ const ProductCard = ({ item }) => {
           style={{ display: loaded ? "block" : "none" }}
         />
 
-        {/* <Card.Img variant="top" className="card-image" src={item.thumbnail} /> */}
-
         <Card.Body className="main-card">
           <Card.Text className="card-description_text">
             {item.description.split(" ").slice(0, 6).join(" ")}

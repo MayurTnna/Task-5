@@ -9,6 +9,7 @@ import Signup from "../views/signup/Signup";
 import ProductDetail from "../components/productDisplay/ProductDetail";
 
 import React from "react";
+import AddProfile from "../components/userProfile/AddProfile";
 
 const RouterPath = () => {
   return (
@@ -21,7 +22,7 @@ const RouterPath = () => {
             <Route path="/product" element={<ProductDisplay />} />
             <Route path="/forgotpassword" element={<ForgotPass />} />
           </Route>
-
+          <Route path="/addprofile" element={<AddProfile />} />
           <Route path="/login" exact element={<Login />} />
           <Route path="/signup" element={<Signup />} />
         </Routes>
