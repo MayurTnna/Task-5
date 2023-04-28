@@ -23,7 +23,7 @@ const ProductCard = ({ item }) => {
         }}
       >
         {!loaded && (
-          <Breathing width={220} height={250} style={{ borderRadius: "5px" }} />
+          <Breathing className="breathing"  style={{ borderRadius: "5px" }} />
         )}
         <Card.Img
           variant="top"
