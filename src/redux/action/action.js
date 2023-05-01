@@ -23,7 +23,10 @@ export const removeItemFromCart = (items) => ({
   type: types.REMOVE_ITEM_FROM_CART,
   payload: items,
 });
-
+export const getProductTotal = (total_price) => ({
+  type: types.GET_PRODUCT_TOTAL,
+  ...total_price,
+});
 export function fetchPosts(skip) {
   return function (dispatch) {
     dispatch(fetchPostStart());

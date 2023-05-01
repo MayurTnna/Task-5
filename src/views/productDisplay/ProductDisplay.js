@@ -10,10 +10,9 @@ import { ColorRing } from "react-loader-spinner";
 
 const ProductDisplay = () => {
   const data = useSelector((state) => state.postReducer.posts);
-
   const [active, setActive] = useState(0);
   const loading = useSelector((state) => state.postReducer.loading);
-  console.log(loading);
+
   const dispatch = useDispatch();
 
   const handleIncrement = (number) => {
@@ -45,9 +44,11 @@ const ProductDisplay = () => {
         <>
           <div className="row container mx-auto ">
             {data.products ? (
+              
               data.products.map((item) => (
                 <div className="col col-lg-3 col-md-6 col-sm-12 my-4 p-5 ">
                   <ProductCard item={item} />
+            
                 </div>
               ))
             ) : (

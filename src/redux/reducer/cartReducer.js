@@ -3,6 +3,7 @@ import * as types from "../actionType";
 const initialState = {
   total: 0,
   data: [],
+  total_price: 0,
 };
 
 const cartReducer = (state = initialState, action) => {
@@ -27,12 +28,14 @@ const cartReducer = (state = initialState, action) => {
           ...state,
           total: state.total + 1,
           data: [...state.data],
+          total_price: state.total_price + state.data[itemPrice1].price,
         };
       } else {
         return {
           ...state,
           total: state.total + 1,
           data: [...state.data, temp],
+          total_price: state.total_price + temp.price,
         };
       }
 
@@ -47,13 +50,25 @@ const cartReducer = (state = initialState, action) => {
           ...state,
           total: state.total - 1,
           data: [...state.data],
+          total_price: state.total_price - state.data[itemPrice].price,
         };
       } else {
         return {
           ...state,
           data: [...removeItem],
+          total_price: state.total_price - action.payload.price,
         };
       }
+    case types.GET_PRODUCT_TOTAL:
+      const total_price = state.data.reduce((initialValue, currentValue) => {
+        let { price, total } = currentValue;
+        initialValue = initialValue + price * total;
+        return initialValue;
+      }, 0);
+      return {
+        ...state,
+        total_price,
+      };
 
     default:
       return { ...state };

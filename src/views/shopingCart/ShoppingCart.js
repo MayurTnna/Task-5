@@ -1,8 +1,10 @@
 import React from "react";
-import "../../assets/scss/shoppingCart.scss"
+import "../../assets/scss/shoppingCart.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { Card, Button } from "react-bootstrap";
 import { addItemToCart, removeItemFromCart } from "../../redux/action/action";
+import { IoBagCheckOutline } from "react-icons/io5";
+import { Link } from "react-router-dom";
 function ShoppingCart() {
   const items = useSelector((state) => state.cartReducer.data);
 
@@ -67,6 +69,13 @@ function ShoppingCart() {
               </Card>
             );
           })}
+        <Link to="/checkout">
+          <span className=" d-flex  justify-content-center">
+            <Button className="mb-2" variant="success">
+              buy now
+            </Button>
+          </span>
+        </Link>
       </div>
     </>
   );

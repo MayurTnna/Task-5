@@ -10,6 +10,8 @@ import ProductDetail from "../components/productDisplay/ProductDetail";
 
 import React from "react";
 import AddProfile from "../components/userProfile/AddProfile";
+import FinalCheckOut from "../components/checkout/FinalCheckOut";
+import Invoice from "../components/checkout/InvoiceGenerator/Invoice";
 
 const RouterPath = () => {
   return (
@@ -22,9 +24,11 @@ const RouterPath = () => {
             <Route path="/product" element={<ProductDisplay />} />
             <Route path="/forgotpassword" element={<ForgotPass />} />
           </Route>
+          <Route path="/checkout" element={<FinalCheckOut />} />
           <Route path="/addprofile" element={<AddProfile />} />
           <Route path="/login" exact element={<Login />} />
           <Route path="/signup" element={<Signup />} />
+          <Route path="/bill" element={<Invoice />} />
         </Routes>
       </BrowserRouter>
       ;
