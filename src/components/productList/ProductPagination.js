@@ -3,7 +3,7 @@ import Pagination from "react-bootstrap/Pagination";
 
 const ProductPagination = ({ active, handleIncrement }) => {
   let items = [];
-  for (let number = 1; number <= 100 / 8; number++) {
+  for (let number = 0; number < 100 / 8; number++) {
     items.push(
       <Pagination.Item
         key={number}
@@ -13,6 +13,7 @@ const ProductPagination = ({ active, handleIncrement }) => {
         {number}
       </Pagination.Item>
     );
+    
   }
 
   return (
