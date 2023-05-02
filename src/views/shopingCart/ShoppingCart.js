@@ -3,17 +3,15 @@ import "../../assets/scss/shoppingCart.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { Card, Button } from "react-bootstrap";
 import { addItemToCart, removeItemFromCart } from "../../redux/action/action";
-import { IoBagCheckOutline } from "react-icons/io5";
 import { Link } from "react-router-dom";
+
 function ShoppingCart() {
   const items = useSelector((state) => state.cartReducer.data);
-
   const dispatch = useDispatch();
 
   return (
     <>
       <div className="shopping-container bg-dark">
-        {/* <h3 className="text-light float-center">Your Shopping Cart</h3> */}
         {items &&
           items.map((item) => {
             return (
@@ -26,13 +24,9 @@ function ShoppingCart() {
                   <Card.Title>
                     <h3 className="float-start">{item.title}</h3>
                     <div className="price float-end">
-                      <h4>
-                        ${item.price * item.total}{" "}
-                        {/* <span className="text-info">(${item.price}/item)</span> */}
-                      </h4>
+                      <h4>${item.price * item.total} </h4>
                     </div>
                   </Card.Title>
-                  {/* <img src={item.thumbnail} style={{height : "30px"}}/> */}
                   <Card.Subtitle
                     className="mb-2 text-muted"
                     style={{ paddingTop: "50px" }}

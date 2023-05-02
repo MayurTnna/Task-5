@@ -113,15 +113,6 @@ const AddProfile = () => {
 
   return (
     <>
-      <div class="alert alert-warning alert-dismissible fade show" role="alert">
-        <strong>Helllo</strong> click on image first , drag and choose image
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="alert"
-          aria-label="Close"
-        ></button>
-      </div>
       <div className="container main-main  ">
         <div className="main-container mx-auto" onClick={handleUploadClick}>
           <input
@@ -158,13 +149,17 @@ const AddProfile = () => {
             <div>
               <h2 className=" preview-text gradient-text ">Preview</h2>
               <img src={croppedImage} alt="Cropped" />
-              <MdUpload onClick={onSave} className="text-danger fs-5 fw-4   " />
+              <MdUpload
+                style={{ position: "absolute", top: "81%", right: "35%" }}
+                onClick={onSave}
+                className="text-danger fs-5 fw-4   "
+              />
             </div>
           )}
         </div>
       </div>
     </>
   );
-};
+}
 
 export default AddProfile;

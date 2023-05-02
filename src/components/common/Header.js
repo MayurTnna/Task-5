@@ -5,7 +5,6 @@ import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { CgProfile } from "react-icons/cg";
-import { IoBagCheckOutline } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { MdOutlineShoppingBag } from "react-icons/md";
@@ -68,7 +67,9 @@ function Header() {
               <CgProfile className="text-info mt-2    " />
             </Button>
           </Form>
-          <div className="mt-5 mx-4">{showCard && <ShoppingCart />}</div>
+          <div className="mt-5 mx-4">
+            {showCard && getData.length > 0 ? <ShoppingCart /> : <></>}
+          </div>
         </Container>
       </Navbar>
     </>

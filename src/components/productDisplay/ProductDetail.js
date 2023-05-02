@@ -29,6 +29,7 @@ import "../../assets/scss/main.scss";
 import "../../assets/scss/productDisplay.scss";
 import { addItemToCart } from "../../redux/action/action";
 import ProductDetailCarousel from "./productdetail/ProductDetailCarousel";
+import { toast } from "react-hot-toast";
 
 const DummyDetail = () => {
   const [data, setData] = useState();
@@ -143,6 +144,7 @@ const DummyDetail = () => {
                   <Button
                     onClick={() => {
                       dispatch(addItemToCart(data));
+                      toast.success("Item added successfully");
                     }}
                     className="addcart text-light"
                     rounded={"none"}

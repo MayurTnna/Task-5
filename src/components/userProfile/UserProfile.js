@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "../../assets/scss/userProfile.scss";
 import Button from "react-bootstrap/Button";
 import { RiLockPasswordLine } from "react-icons/ri";
@@ -12,6 +12,8 @@ import { MyAvatar } from "./MyAvatar";
 
 function UserProfile() {
   const navigate = useNavigate();
+ 
+
   const userData = JSON.parse(localStorage.getItem("user")) || [];
   const handleUpdatePassword = () => {
     navigate("/forgotpassword");

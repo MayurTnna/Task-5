@@ -35,9 +35,9 @@ const ProductCard = ({ item }) => {
         />
 
         <Card.Body className="main-card">
-          <Card.Text className="card-description_text">
+          {/* <Card.Text className="card-description_text">
             {item.description.split(" ").slice(0, 6).join(" ")}
-          </Card.Text>
+          </Card.Text> */}
 
           <Card.Title className="text-start card-title_text">
             {item.title}
@@ -49,18 +49,20 @@ const ProductCard = ({ item }) => {
           <Card.Text className="float-end fw-5 text-danger">
             ${item.price}.00
           </Card.Text>
+
+          <Card.Text className="card-description_text  text-start mt-2 float-start">
+            {item.description.split(" ").slice(0, 20).join(" ")}
+          </Card.Text>
+         
         </Card.Body>
+       
 
         <div className="container">
           <Card.Text className="float-start fw-5">
             <Stars rating={item.rating} />
-            {/* <Badge pill bg="warning" text="dark" className="badge">
-              <div className="d-flex align-items-center justify-content-center">
-                {/* {item.rating} */}
-            {/* <RiStarSFill /> */}
-            {/* </div> */}
-            {/* </Badge> */}
+            
           </Card.Text>
+          
           <Card.Text className="float-end text-success">
             {item.discountPercentage}%
           </Card.Text>

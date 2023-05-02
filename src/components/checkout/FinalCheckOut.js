@@ -100,10 +100,12 @@ const FinalCheckOut = () => {
               />
               <button className=" btn-success btn">Apply</button>
             </div>
-            <Button variant="outline-success" className="btn-go-checkout">
-              <FaLock className="fa-lock mb-1" />
-              <span className="text-dark">Go to Checkout</span>
-            </Button>
+            <Link to="/bill">
+              <Button variant="outline-success" className="btn-go-checkout">
+                <FaLock className="fa-lock mb-1" />
+                <span className="text-dark">Generate invoice</span>
+              </Button>
+            </Link>
           </div>
           <div className="help">
             <p>Need help? Call free 01234 567 890</p>
