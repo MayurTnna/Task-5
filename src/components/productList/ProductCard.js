@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import "../../assets/scss/productDisplay.scss";
 import "../../assets/scss/main.scss";
 import Stars from "./Stars";
-import { Breathing, Shimmer } from "react-shimmer";
+import { Breathing } from "react-shimmer";
 import { useState } from "react";
 
 const ProductCard = ({ item }) => {
@@ -23,7 +23,7 @@ const ProductCard = ({ item }) => {
         }}
       >
         {!loaded && (
-          <Breathing className="breathing"  style={{ borderRadius: "5px" }} />
+          <Breathing className="breathing" style={{ borderRadius: "5px" }} />
         )}
         <Card.Img
           variant="top"
@@ -53,16 +53,13 @@ const ProductCard = ({ item }) => {
           <Card.Text className="card-description_text  text-start mt-2 float-start">
             {item.description.split(" ").slice(0, 20).join(" ")}
           </Card.Text>
-         
         </Card.Body>
-       
 
         <div className="container">
           <Card.Text className="float-start fw-5">
             <Stars rating={item.rating} />
-            
           </Card.Text>
-          
+
           <Card.Text className="float-end text-success">
             {item.discountPercentage}%
           </Card.Text>

@@ -42,13 +42,11 @@ const ProductDisplay = () => {
         </div>
       ) : (
         <>
-          <div className="row container mx-auto ">
+          <div className="row  mx-auto ">
             {data.products ? (
-              
               data.products.map((item) => (
-                <div className="col col-lg-3 col-md-6 col-sm-12 my-4 p-5 ">
+                <div className=" col-lg-3 col-md-6 col-sm-12 my-4 px-4 ">
                   <ProductCard item={item} />
-            
                 </div>
               ))
             ) : (

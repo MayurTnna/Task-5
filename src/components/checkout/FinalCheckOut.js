@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "../../assets/scss/finalCheckout.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { FaArrowLeft, FaLock } from "react-icons/fa";
@@ -14,6 +14,10 @@ const FinalCheckOut = () => {
   useEffect(() => {
     dispatch(getProductTotal());
   }, [dispatch]);
+  const [promoCode, setPromoCode] = useState("");
+  const handlePromoCodeChange = (event) => {
+    setPromoCode(event.target.value);
+  };
 
   return (
     <>
@@ -76,34 +80,63 @@ const FinalCheckOut = () => {
               <p className="small">Subtotal:</p>
               <p className="small">${total_price}</p>
             </div>
-            <div className="delivery">
-              <p className="small">
-                Delivery (Standard - 2 working days)
-                <br />
-                <span className="change-delivery">Change delivery method</span>
-              </p>
-              <p className="small">Free</p>
-            </div>
+            {promoCode === "YOUR_PROMO_CODE" ? (
+              <div className="delivery">
+                <p className="small ">
+                  Delivery (Standard - 2 working days)
+                  <br />
+                  <span className="change-delivery">
+                    Change delivery method
+                  </span>
+                </p>
+                <p className="small">$0.00</p>
+              </div>
+            ) : (
+              <div className="delivery">
+                <p className="small ">
+                  Delivery (Standard - 2 working days)
+                  <br />
+                  <span className="change-delivery">
+                    Change delivery method
+                  </span>
+                </p>
+                <p className="small">$5.00</p>
+              </div>
+            )}
             <div className="total">
               <h3>Total:</h3>
               <h3>${total_price}</h3>
             </div>
-            <div className="promo-checkbox">
-              <input type="checkbox" name="promo-check" checked />
-              <label htmlFor="promo-check">I have a promo code</label>
+            <div className="promo-checkbox ">
+              <input
+                type="checkbox"
+                name="promo-check"
+                checked={promoCode !== ""}
+                onChange={() => setPromoCode("")}
+              />
+
+              <label htmlFor="promo-check" className="px-1">
+                I have a promo code
+              </label>
             </div>
             <div className="promo-code">
               <input
                 type="text"
                 name="promo-checkbox"
                 placeholder="Enter your promo code here"
+                value={promoCode}
+                onChange={handlePromoCodeChange}
               />
               <button className=" btn-success btn">Apply</button>
             </div>
             <Link to="/bill">
-              <Button variant="outline-success" className="btn-go-checkout">
+              <Button
+                variant="outline-success"
+                className="btn-go-checkout text-light"
+                a
+              >
                 <FaLock className="fa-lock mb-1" />
-                <span className="text-dark">Generate invoice</span>
+                <span className="text-light">Generate invoice</span>
               </Button>
             </Link>
           </div>

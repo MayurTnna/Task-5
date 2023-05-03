@@ -89,17 +89,14 @@
   }
 }
 .card-image {
-  height: 10rem;
+  height: 11rem;
   width: 100%;
   border-radius: 20px;
-  padding: 5px;
+  padding: 8px;
 }
 
 .card-description_text {
   font-size: 12px;
-  // background-image: linear-gradient(60deg, #E21143, #FFB03A);
-  // background-clip: text;
-  // color: transparent;
   color: #ffffff;
   font-weight: 300;
 }
@@ -110,6 +107,7 @@
 }
 .main-card {
   height: 100%;
+  max-width: 300px;
   width: 100%;
   background: #252831;
 
